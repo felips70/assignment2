@@ -3,16 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Assignment 2</title>
   <link rel="stylesheet" href="./styles.css">
+  <link rel="icon" href="./favicon-16x16.png" type="image/x-icon">
 </head>
+<script>
+  function generateRandomNumber () {
+    return Math.floor(Math.random() * 10);
+  }
+  const randomNumber = generateRandomNumber();
+  
+  let count = 0;
+  
+  function onClick() {
+    count++;
+    const guess = parseInt(document.querySelector('#random-number-input').value);
+    if (guess > randomNumber) {
+      alert('OOPS SORRY!! TRY A SMALLER NUMBER');
+    } else if (guess < randomNumber) {
+      alert('OOPS SORRY!! TRY A GREATER NUMBER');
+    } else if (isNaN(guess)) {
+      alert('PLEASE GUESS A NUMBER, NOT A STRING');
+    } else {
+      alert(`CONGRATULATIONS!!! YOU GUESSED IT RIGHT IN ${count} GUESSES`);
+    }
+  }
+
+</script>
 <body>
   <div class="container">
     <h1>Guess The Number</h1>
     <p>We have selected a random number between 1 - 10. See if you can guess it.</p>
     <label for="random-number">Enter a guess:</label>
-    <input type="text" name="random-number">
-    <button>Submit guess</button>
+    <input id="random-number-input" type="text" name="random-number">
+    <button id="guess-button" onclick="onClick()">Submit guess</button>
   </div>
 </body>
 </html>
